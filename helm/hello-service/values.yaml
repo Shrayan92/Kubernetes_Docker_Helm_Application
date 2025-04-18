@@ -1,0 +1,19 @@
+replicaCount: 2
+
+image:
+  repository: myregistry/hello-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: hello.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
